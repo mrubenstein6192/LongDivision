@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="container my-4">
     <div class="row my-2">
       <!-- blank space -->
       <div class="col-6">
@@ -24,10 +24,10 @@
       <div class="col-6">
         <div class="row">
           <div class="col-6" id="quotient">
-            
+
           </div>
           <div class="col-6" id="remainder">
-            
+
           </div>
         </div>
       </div>
@@ -39,20 +39,20 @@
       </div>
       <!-- the dividend will go here -->
       <div class="col-6 border-left border-top border-dark" id="dividend">
-
+        
       </div>
 
     </div>
 
-    <div id = "messages">
-      
-    </div>
-
-    <div id = "error-message">
+    <div id="messages" class = "my-2">
 
     </div>
 
-    <div id="answer-box">
+    <div id="error-message" class = "my-2">
+
+    </div>
+
+    <div id="answer-box" class = "my-2">
 
     </div>
   </div>
@@ -109,7 +109,7 @@
   </div>
 
   <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
       $(".calculator").hide();
       $(".calc").show();
       // Make our variables global to the runtime of our application
@@ -129,7 +129,7 @@
         isCalculated = false;
         $("#first-number, #second-number, #operator, #result").empty();
       }
-      $(".number").on("click", function() {
+      $(".number").on("click", function () {
         // Check if we've already run a calculation, if so... we'll just.
         if (isCalculated) {
           return false;
@@ -138,13 +138,12 @@
         if (isOperatorChosen) {
           secondNumber += $(this).val();
           $("#second-number").text(secondNumber);
-        }
-        else {
+        } else {
           firstNumber += $(this).val();
           $("#first-number").text(firstNumber);
         }
       });
-      $(".operator").on("click", function() {
+      $(".operator").on("click", function () {
         // Check if a first number has already been selected
         // Or we've already run a calculation, if so we just exit.
         if (!firstNumber || isCalculated) {
@@ -157,7 +156,7 @@
         // Set the HTML of the #operator to the text of what was clicked
         $("#operator").text($(this).text());
       });
-      $(".equal").on("click", function() {
+      $(".equal").on("click", function () {
         // If we already clicked equal, don't do the calculation again
         if (isCalculated) {
           return false;
@@ -171,29 +170,25 @@
         // Then run the operation and set the HTML of the result of that operation
         if (operator === "plus") {
           result = firstNumber + secondNumber;
-        }
-        else if (operator === "minus") {
+        } else if (operator === "minus") {
           result = firstNumber - secondNumber;
-        }
-        else if (operator === "times") {
+        } else if (operator === "times") {
           result = firstNumber * secondNumber;
-        }
-        else if (operator === "divide") {
+        } else if (operator === "divide") {
           result = firstNumber / secondNumber;
-        }
-        else if (operator === "power") {
+        } else if (operator === "power") {
           result = Math.pow(firstNumber, secondNumber);
         }
         $("#result").text(result);
       });
-      $(".clear").on("click", function() {
+      $(".clear").on("click", function () {
         // Call initializeCalculater so we can reset the state of our app
         initializeCalculator();
       });
       // Call initializeCalculater so we can set the state of our app
       initializeCalculator();
     });
-</script>
+  </script>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
