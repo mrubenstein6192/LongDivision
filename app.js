@@ -18,9 +18,14 @@ var b = $("<button>");
 b.addClass('submit')
 b.text("Check");
 
+var calcButton = $("<button>");
+calcButton.addClass('calc')
+calcButton.text("Show Calculator")
+
 // $("#answer-box").append(r)
 $("#answer-box").append(c)
 $("#answer-box").append(b)
+$("#answer-box").append(calcButton);
 }
 
 //on click function to take value from the yes or no buttons
@@ -43,13 +48,26 @@ function doesDivide() {
       $("#error-message").text("That is correct!");
     }
     else {
-      $("#error-message").append("Sorry, that is incorrect.  Try again!")
+      $("#error-message").text("Sorry, that is incorrect.  Try again!")
     }
   })
 }
 
 $(document).ready(function() {
- 
+ $(document).on("click", ".calc", function() {
+   $(".calculator").show();
+   $(".calc").hide();
+
+  var hideCalculator = $("<button>");
+  hideCalculator.addClass('hideCalc');
+  hideCalculator.text("Hide Calculator");
+   $("#answer-box").append(hideCalculator)
+   $(document).on("click", ".hideCalc", function() {
+     $(".calculator").hide();
+     $(".hideCalc").hide();
+     $(".calc").show();
+   })
+ })
   $("#divisor").text(divisor);
   $("#dividend").text(dividend);
 
