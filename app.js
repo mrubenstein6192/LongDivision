@@ -4,6 +4,23 @@
   var quotient = "";
   var remainder = "";
 
+  var c = $('<input>').attr('type', 'number').addClass('firstAnswer').css("margin","10px");
+
+  var b = $("<button>");
+  b.addClass('submit')
+  b.text("Submit");
+
+  var calcButton = $("<button>");
+  calcButton.addClass('calc').css("margin","10px");
+  calcButton.text("Show Calculator")
+
+  // $("#answer-box").append(r)
+  $("#answer-box").append(c)
+  $("#answer-box").append(b)
+  $("#answer-box").append(calcButton);
+
+
+
   // break dividend into an array to use each digit separately
   const arr = Array.from(String(dividend), Number)
   console.log(arr);
@@ -12,22 +29,37 @@
   function firstCheck() {
     $("#messages").text("How many times does " + divisor + " divide into " + arr[0] + "? (Hint: 0 is a possible answer!)\n");
 
-    var c = $('<input>').attr('type', 'number').addClass('firstAnswer').css("margin","10px");
-
-    var b = $("<button>");
-    b.addClass('submit')
-    b.text("Submit");
-
-    var calcButton = $("<button>");
-    calcButton.addClass('calc').css("margin","10px");
-    calcButton.text("Show Calculator")
-
-    // $("#answer-box").append(r)
-    $("#answer-box").append(c)
-    $("#answer-box").append(b)
-    $("#answer-box").append(calcButton);
-
   }
+
+  function doesDivide() {
+    var answer;
+
+    console.log(arr[0] / divisor);
+
+    $(document).on("click", ".submit", function () {
+      console.log("this is clicked")
+      answer = Math.floor(arr[0] / divisor)
+      console.log(answer);
+
+      var userAnswer = $(".firstAnswer").val();
+      console.log(userAnswer);
+ 
+      if (userAnswer && answer == 0) {
+        $("#quotient").text("0")
+        secondCheck();
+      }
+      else {
+        if (userAnswer == answer) {
+        console.log("you are correct")
+        $("#quotient").append(userAnswer);
+        $("#error-message").text("That is correct!")
+        // firstMultiply()
+      } else {
+        $("#error-message").text("Sorry, that is incorrect.  Try again!")
+      }
+      
+    }
+
 
   function secondCheck() {
     var newArr = arr.slice(0,2)
@@ -58,52 +90,37 @@
    
           if (userAnswer == answer) {
           console.log("you are correct")
-          $("#quotient").append(userAnswer);
+          $("#quotient").text("0" + userAnswer);
           $("#error-message").text("That is correct!");
         } else {
           $("#error-message").text("Sorry, that is incorrect.  Try again!")
         }
-        firstSuccess()
+        // firstMultiply()
       })
-
     }
-
   }
 
-  function firstSuccess() {
-    $("#messages").text("How many times does " + divisor + " divide into " + arr[1] + "? (Hint: 0 is a possible answer!)\n");
-}
-  //on click function to take value from the yes or no buttons
-  function doesDivide() {
-    var answer;
-
-    console.log(arr[0] / divisor);
-
-    $(document).on("click", ".submit", function () {
-      console.log("this is clicked")
-      answer = Math.floor(arr[0] / divisor)
-      console.log(answer);
-
-      var userAnswer = $(".firstAnswer").val();
-      console.log(userAnswer);
- 
-      if (userAnswer && answer == 0) {
-        secondCheck();
-      }
-      else {
-        if (userAnswer == answer) {
-        console.log("you are correct")
-        $("#quotient").append(userAnswer);
-        $("#error-message").text("That is correct!");
-      } else {
-        $("#error-message").text("Sorry, that is incorrect.  Try again!")
-      }
-      firstSuccess()
-    }
-    
-
+  
     })
   }
+
+  // function firstMultiply() {
+  //   $("#error-message").empty();
+  //   var userAnswerTwo = $(".firstAnswer").val();
+    
+  //   $("#messages").text("That is correct! \nMultiply: " + userAnswerTwo + " times " + divisor + ".")
+
+  //   var product = userAnswerTwo * divisor;
+  //   var userProduct = $(".firstAnswer").val();
+
+  //   if (userProduct === product) {
+  //     $("#dividend").append(userProduct);
+  //       $("#error-message").text("That is correct!");
+  //     } else {
+  //       $("#error-message").text("Sorry, that is incorrect.  Try again!")
+  //     }
+  //   }
+  
 
   $(document).ready(function () {
     $(document).on("click", ".calc", function () {
