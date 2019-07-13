@@ -12,7 +12,6 @@
   function firstCheck() {
     $("#messages").text("How many times does " + divisor + " divide into " + arr[0] + "? (Hint: 0 is a possible answer!)\n");
 
-
     var c = $('<input>').attr('type', 'number').addClass('firstAnswer').css("margin","10px");
 
     var b = $("<button>");
@@ -28,9 +27,52 @@
     $("#answer-box").append(b)
     $("#answer-box").append(calcButton);
 
-    
   }
 
+  function secondCheck() {
+    var newArr = arr.slice(0,2)
+    console.log(newArr);
+
+    var newString = newArr.toString().replace(",","");
+    console.log(newString);
+
+    var newNumber = parseInt(newString, 10)
+    console.log(newNumber)
+
+    $("#messages").text("Great! So then how many times does " + divisor + " divide into " + newNumber + "? (Hint: 0 is a possible answer!)\n");
+
+    doesDivideTwo()
+
+    function doesDivideTwo() {
+      var answer;
+  
+      console.log(newNumber / divisor);
+  
+      $(document).on("click", ".submit", function () {
+        console.log("this is clicked")
+        answer = Math.floor(newNumber / divisor)
+        console.log(answer);
+  
+        var userAnswer = $(".firstAnswer").val();
+        console.log(userAnswer);
+   
+          if (userAnswer == answer) {
+          console.log("you are correct")
+          $("#quotient").append(userAnswer);
+          $("#error-message").text("That is correct!");
+        } else {
+          $("#error-message").text("Sorry, that is incorrect.  Try again!")
+        }
+        firstSuccess()
+      })
+
+    }
+
+  }
+
+  function firstSuccess() {
+    $("#messages").text("How many times does " + divisor + " divide into " + arr[1] + "? (Hint: 0 is a possible answer!)\n");
+}
   //on click function to take value from the yes or no buttons
   function doesDivide() {
     var answer;
@@ -46,7 +88,7 @@
       console.log(userAnswer);
  
       if (userAnswer && answer == 0) {
-        $("#error-message").text("Great! Let's move on...")
+        secondCheck();
       }
       else {
         if (userAnswer == answer) {
@@ -56,6 +98,7 @@
       } else {
         $("#error-message").text("Sorry, that is incorrect.  Try again!")
       }
+      firstSuccess()
     }
     
 
