@@ -116,6 +116,7 @@ function doesDivide() {
       $("#messages").text("Great! So then how many times does " + divisor + " divide into " + newNumber + "? (Hint: 0 is a possible answer!)\n");
 
       doesDivideTwo()
+      
 
       function doesDivideTwo() {
    
@@ -134,9 +135,10 @@ function doesDivide() {
           if (userAnswerInt === answer) {
             console.log("you are correct")
             $("#quotient").text("0" + userAnswerInt);
-            $("#error-message").text("That is correct!");
-            $("#messages").empty()
+            $("#error-message").empty();
             firstMultiply()
+            
+            
           } else {
             $("#error-message").text("Sorry, that is incorrect.  Try again!")
           }
@@ -171,35 +173,14 @@ function firstMultiply() {
     console.log(productInt)
 
     if (product === productInt) {
-      $("#messages").empty();
+      $("#error-message").empty();
       $("#messages").text("That is correct!")
       $("#multiplied").show()
       $("#multiplied").append(product);
     } else {
-      $("#messages").text("Sorry that is not correct.  Try")
+      $("#error-message").text("Sorry, that is incorrect.  Try again!")
     }
 
   })
 }
 
-// function doesMultiply() {
-// var userAnswerTwo = $(".firstAnswer").val();
-// $("#answer-box").html(secondInput)
-// $("#answer-box").html(secondButton)
-// $("#answer-box").append(calcButton);
-
-// $(document).on("click", ".submitTwo", function (){
-
-// var product = userAnswerTwo * divisor;
-// var userProduct = $(".secondAnswer").val();
-// console.log(userProduct);
-
-// if (userProduct === product) {
-//   $("#multiplied").show();
-//   $("#multiplied").text(userProduct);
-//     $("#error-message").text("That is correct!");
-//   } else {
-//     $("#error-message").text("Sorry, that is incorrect.  Try again!")
-//   }
-// })
-// }
