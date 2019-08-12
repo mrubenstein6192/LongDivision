@@ -18,6 +18,7 @@ $(document).ready(function () {
   $("#dividend").text(dividend);
   $("#multiplied").hide()
   $("#difference").hide();
+  $("#secondMult").hide();
   
   // message to the user to see if divisor goes into first digit of dividend
   firstCheck()
@@ -191,11 +192,27 @@ function firstSubtraction() {
 
           if (userNewQuotientInt == newQuotientInt) {
             $("#quotient").append(userNewQuotientInt);
+            $("#messages").text("Correct! Now multiply " + userNewQuotientInt + " x " + divisor)
+            $("#error-message").empty();
+            $("#second-error-message").empty();
           }
-        })
+          else {
+            $("#second-error-message").text("Sorry, that is incorrect.  Try again!")
+        }
+      })
+            // var thirdProduct = userNewQuotientInt * divisor;
+            // var userThirdProduct = $(".fourthAnswer").val();
+            
+            // if (userThirdProduct == thirdProduct) {
+            //   console.log("correct")
+            // }
+
+            // $("#secondMult").show();
+            // $("#secondMult").append("&nbsp;&nbsp;" + userNewQuotientInt);
+          }
+        }
        
-      }
-    } else {
+       else {
       $("#error-message").text("Sorry, that is incorrect.  Try again!")
     }
 
