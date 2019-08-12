@@ -18,6 +18,7 @@ $(document).ready(function () {
   $("#dividend").text(dividend);
   $("#multiplied").hide()
   $("#difference").hide();
+  
   // message to the user to see if divisor goes into first digit of dividend
   firstCheck()
 })
@@ -211,11 +212,18 @@ function firstSubtraction() {
       $("#messages").text("That is correct!")
       $("#difference").show()
       $("#difference").append(difference);
-      // firstSubtraction();
+      bringDown();
+      function bringDown() {
+        $("#multiplied").append("↓");
+        $("#difference").append(arr[1]);
+      }
     } else {
       $("#error-message").text("Sorry, that is incorrect.  Try again!")
     }
 
   })
+  
 }
+
+
 
