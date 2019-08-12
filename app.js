@@ -46,11 +46,11 @@ secondButton.addClass('submitTwo');
 secondButton.text("Submit");
 
 var thirdButton = $("<button>");
-thirdButton.addClass('submit');
+thirdButton.addClass('submitThree');
 thirdButton.text("Submit")
 
 var fourthButton = $("<button>");
-fourthButton.addClass('submit');
+fourthButton.addClass('submitFour');
 fourthButton.text("Submit");
 
 var calcButton = $("<button>");
@@ -189,7 +189,33 @@ function firstSubtraction() {
   $("#error-message").empty();
   var lastUserInput = $(".secondAnswer").val();
   console.log(lastUserInput);
-  $("#messages").text("Correct! Now subtract: ")
+  $("#messages").text("Correct! Now subtract: " + arr[0] + " - " + lastUserInput)
   $("#multiplied").text(lastUserInput);
+
+  var difference = arr[0] - lastUserInput;
+  console.log(difference);
+
+  $("#answer-box").html(thirdInput)
+  $("#answer-box").append(thirdButton)
+  $("#answer-box").append(calcButton);
+
+  $(document).on("click", ".submitThree", function () {
+    var userProduct = $(".thirdAnswer").val();
+
+    console.log(userProduct);
+    var differenceInt = parseInt(userProduct, 10)
+    console.log(differenceInt)
+
+    if (difference === differenceInt) {
+      $("#error-message").empty();
+      $("#messages").text("That is correct!")
+      $("#difference").show()
+      $("#difference").append(difference);
+      // firstSubtraction();
+    } else {
+      $("#error-message").text("Sorry, that is incorrect.  Try again!")
+    }
+
+  })
 }
 
