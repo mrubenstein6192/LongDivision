@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  
   $(document).on("click", ".calc", function () {
     $(".calculator").show();
     $(".calc").hide();
@@ -150,9 +151,8 @@ function doesDivide() {
   }
 
 function firstMultiply() {
-
+  $("#error-message").empty();
   var userAnswer = $(".firstAnswer").val();
-  $("#error-message").text("")
   $("#messages").text("That is correct! Multiply: " + userAnswer + " x " + divisor + " = ?")
   
   var product = userAnswer * divisor;
@@ -177,10 +177,19 @@ function firstMultiply() {
       $("#messages").text("That is correct!")
       $("#multiplied").show()
       $("#multiplied").append(product);
+      firstSubtraction();
     } else {
       $("#error-message").text("Sorry, that is incorrect.  Try again!")
     }
 
   })
+}
+
+function firstSubtraction() {
+  $("#error-message").empty();
+  var lastUserInput = $(".secondAnswer").val();
+  console.log(lastUserInput);
+  $("#messages").text("Correct! Now subtract: ")
+  $("#multiplied").text(lastUserInput);
 }
 
