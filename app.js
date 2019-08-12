@@ -209,13 +209,24 @@ function firstSubtraction() {
 
     if (difference === differenceInt) {
       $("#error-message").empty();
-      $("#messages").text("That is correct!")
+      $("#messages").text("That is correct! Bring down " + arr[1] + " and repeat!")
       $("#difference").show()
       $("#difference").append(difference);
       bringDown();
       function bringDown() {
+        var newDiff = $(".thirdAnswer").val();
+        console.log(newDiff);
         $("#multiplied").append("↓");
         $("#difference").append(arr[1]);
+        var newDividendArr = [];
+        var numberString = arr[1].toString();
+        newDividendArr.push(newDiff, numberString);
+        console.log(newDividendArr);
+        var newDividendString = newDividendArr.toString().replace(",", "");;
+        var newDividend = parseInt(newDividendString,10);
+        console.log(newDividend);
+        $("#error-message").append("How many times does " + divisor + " divide into " + newDividend + "?")
+
       }
     } else {
       $("#error-message").text("Sorry, that is incorrect.  Try again!")
