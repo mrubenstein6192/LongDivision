@@ -88,10 +88,10 @@ function doesDivide() {
     var userAnswer = $(".firstAnswer").val();
     // console.log(userAnswer);
 
-    if (userAnswer && answer == 0) {
-      $("#quotient").text("0")
-      secondCheck();
-    } else {
+    // if (userAnswer && answer == 0) {
+    //   $("#quotient").text("0")
+    //   secondCheck();
+    // } else {
       if (userAnswer == answer) {
         console.log("you are correct")
         $("#quotient").append(userAnswer);
@@ -101,9 +101,10 @@ function doesDivide() {
         $("#error-message").text("Sorry, that is incorrect.  Try again!")
       }
 
-    }
-  })
-}
+    })
+  }
+//   )
+// }
 
     function secondCheck() {
       var newArr = arr.slice(0, 2)
