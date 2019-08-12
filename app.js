@@ -26,7 +26,7 @@ $(document).ready(function () {
 
 // get random values for problem
 var divisor = Math.floor(Math.random() * 9) + 1;
-var dividend = Math.floor(Math.random() * 8999) + 1000;
+var dividend = Math.floor(Math.random() * 899) + 100;
 var quotient = "";
 var remainder = "";
 
@@ -34,10 +34,11 @@ var firstInput = $('<input>').attr('type', 'number').addClass('firstAnswer').css
 var secondInput = $('<input>').attr('type', 'number').addClass('secondAnswer').css("margin", "10px");
 var thirdInput = $('<input>').attr('type', 'number').addClass('thirdAnswer').css("margin", "10px");
 var fourthInput = $('<input>').attr('type', 'number').addClass('fourthAnswer').css("margin", "10px");
-
-var secondAnswer = $(".secondAnswer").val();
-var thirdAnswer = $(".thirdAnswer").val();
-var fourthAnswer = $(".fourthAnswer").val();
+var fifthInput = $('<input>').attr('type', 'number').addClass('fifthAnswer').css("margin", "10px");
+var sixthInput = $('<input>').attr('type', 'number').addClass('sixthAnswer').css("margin", "10px");
+// var secondAnswer = $(".secondAnswer").val();
+// var thirdAnswer = $(".thirdAnswer").val();
+// var fourthAnswer = $(".fourthAnswer").val();
 
 var b = $("<button>");
 b.addClass('submit')
@@ -54,6 +55,14 @@ thirdButton.text("Submit")
 var fourthButton = $("<button>");
 fourthButton.addClass('submitFour');
 fourthButton.text("Submit");
+
+var fifthButton = $("<button>");
+fifthButton.addClass('submitFive');
+fifthButton.text("Submit");
+
+var sixthButton = $("<button>");
+sixthButton.addClass('submitSix');
+sixthButton.text("Submit");
 
 var calcButton = $("<button>");
 calcButton.addClass('calc').css("margin", "10px");
@@ -195,6 +204,25 @@ function firstSubtraction() {
             $("#messages").text("Correct! Now multiply " + userNewQuotientInt + " x " + divisor)
             $("#error-message").empty();
             $("#second-error-message").empty();
+            $("#answer-box").html(fifthInput);
+            $("#answer-box").append(fifthButton);
+            $("#answer-box").append(calcButton);
+
+            var secondProduct = divisor * userNewQuotientInt;
+            console.log(secondProduct);
+            $(document).on("click", ".submitFive", function() {
+              var userSecondProduct = $(".fifthAnswer").val();
+              if (userSecondProduct == secondProduct) {
+                if (secondProduct > 9) {
+                  $("#secondMult").show();
+                  $("#secondMult").append(userSecondProduct);
+                }
+                else {
+                $("#secondMult").show();
+                $("#secondMult").append("&nbsp;&nbsp;" + userSecondProduct);
+                }
+              }
+            })
           }
           else {
             $("#second-error-message").text("Sorry, that is incorrect.  Try again!")
