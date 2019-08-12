@@ -93,6 +93,7 @@ function doesDivide() {
     //   secondCheck();
     // } else {
       if (userAnswer == answer) {
+       
         console.log("you are correct")
         $("#quotient").append(userAnswer);
         firstMultiply()
@@ -153,8 +154,15 @@ function doesDivide() {
   }
 
 function firstMultiply() {
-  $("#error-message").empty();
   var userAnswer = $(".firstAnswer").val();
+  if (userAnswer == 0) {
+    $("#error-message").text("Since your answer is 0, you can skip this step, but it's good practice for the routine of Long Division!")
+  }
+  else {
+    $("#error-message").empty();
+  }
+  // $("#error-message").empty();
+  
   $("#messages").text("That is correct! Multiply: " + userAnswer + " x " + divisor + " = ?")
   
   var product = userAnswer * divisor;
