@@ -253,6 +253,13 @@ function firstSubtraction() {
                     $("#difference").append("↓");
                     $("#secondMult").append("↓")
                     $("#secondDifference").append(arr[2]);
+                    var thirdDividendArr = [];
+                    var thirdNumberString = arr[2].toString();
+                    thirdDividendArr.push(userSecondDifference, thirdNumberString);
+                    var thirdDividendString = thirdDividendArr.toString().replace(",", "");
+                    var thirdDividend = parseInt(thirdDividendString, 10);
+                    console.log(thirdDividend);
+                    $("#error-message").text("How many times does " + divisor + " divide into " + thirdDividend + "?")
                   }
                 }) 
               }
