@@ -19,6 +19,7 @@ $(document).ready(function () {
   $("#multiplied").hide()
   $("#difference").hide();
   $("#secondMult").hide();
+  $("#secondDifference").hide()
   
   // message to the user to see if divisor goes into first digit of dividend
   firstCheck()
@@ -36,6 +37,8 @@ var thirdInput = $('<input>').attr('type', 'number').addClass('thirdAnswer').css
 var fourthInput = $('<input>').attr('type', 'number').addClass('fourthAnswer').css("margin", "10px");
 var fifthInput = $('<input>').attr('type', 'number').addClass('fifthAnswer').css("margin", "10px");
 var sixthInput = $('<input>').attr('type', 'number').addClass('sixthAnswer').css("margin", "10px");
+var seventhInput = $('<input>').attr('type', 'number').addClass('seventhAnswer').css("margin", "10px");
+var eigthInput = $('<input>').attr('type', 'number').addClass('eigthAnswer').css("margin", "10px");
 // var secondAnswer = $(".secondAnswer").val();
 // var thirdAnswer = $(".thirdAnswer").val();
 // var fourthAnswer = $(".fourthAnswer").val();
@@ -63,6 +66,14 @@ fifthButton.text("Submit");
 var sixthButton = $("<button>");
 sixthButton.addClass('submitSix');
 sixthButton.text("Submit");
+
+var seventhButton = $("<button>");
+seventhButton.addClass('submitSeven');
+seventhButton.text("Submit");
+
+var eigthButton = $("<button>");
+eigthButton.addClass('submitEight');
+eigthButton.text("Submit");
 
 var calcButton = $("<button>");
 calcButton.addClass('calc').css("margin", "10px");
@@ -210,6 +221,7 @@ function firstSubtraction() {
 
             var secondProduct = divisor * userNewQuotientInt;
             console.log(secondProduct);
+
             $(document).on("click", ".submitFive", function() {
               var userSecondProduct = $(".fifthAnswer").val();
               if (userSecondProduct == secondProduct) {
@@ -221,6 +233,28 @@ function firstSubtraction() {
                 $("#secondMult").show();
                 $("#secondMult").append("&nbsp;&nbsp;" + userSecondProduct);
                 }
+                $("#messages").text("Awesome! Time to subtract again: " + newDividend + " - " + secondProduct);
+                $("#error-message").empty();
+                $("#second-error-message").empty();
+                $("#answer-box").html(sixthInput);
+                $("#answer-box").append(sixthButton);
+                $("#answer-box").append(calcButton);
+
+                var secondDifference = newDividend - secondProduct;
+                console.log(secondDifference);
+
+                $(document).on("click", ".submitSix", function() {
+                  var userSecondDifference = $(".sixthAnswer").val();
+                  if (userSecondDifference == secondDifference) {
+                    $("#secondDifference").show();
+                    $("#secondDifference").append("&nbsp;&nbsp;" + userSecondDifference);
+                    $("#messages").text("You got this! Bring down " + arr[2] + " and repeat!")
+                    $("#multiplied").append("↓");
+                    $("#difference").append("↓");
+                    $("#secondMult").append("↓")
+                    $("#secondDifference").append(arr[2]);
+                  }
+                }) 
               }
             })
           }
