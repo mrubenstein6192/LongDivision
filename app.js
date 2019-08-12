@@ -25,7 +25,7 @@ $(document).ready(function () {
 
 // get random values for problem
 var divisor = Math.floor(Math.random() * 9) + 1;
-var dividend = Math.floor(Math.random() * 9999) + 1;
+var dividend = Math.floor(Math.random() * 8999) + 1000;
 var quotient = "";
 var remainder = "";
 
@@ -86,82 +86,27 @@ function doesDivide() {
     console.log(answer);
 
     var userAnswer = $(".firstAnswer").val();
-    // console.log(userAnswer);
-
-    // if (userAnswer && answer == 0) {
-    //   $("#quotient").text("0")
-    //   secondCheck();
-    // } else {
+    
       if (userAnswer == answer) {
        
         console.log("you are correct")
         $("#quotient").append(userAnswer);
         firstMultiply()
-        // $("#error-message").text("That is correct!")
       } else {
         $("#error-message").text("Sorry, that is incorrect.  Try again!")
       }
 
     })
   }
-//   )
-// }
-
-    function secondCheck() {
-      var newArr = arr.slice(0, 2)
-      console.log(newArr);
-
-      var newString = newArr.toString().replace(",", "");
-      console.log(newString);
-
-      var newNumber = parseInt(newString, 10)
-      console.log(newNumber)
-
-      $("#messages").text("Great! So then how many times does " + divisor + " divide into " + newNumber + "? (Hint: 0 is a possible answer!)\n");
-
-      doesDivideTwo()
-      
-
-      function doesDivideTwo() {
-   
-        console.log(newNumber / divisor);
-
-        $(document).on("click", ".submit", function() {
-          console.log("this is clicked")
-          var answer = Math.floor(newNumber / divisor)
-          console.log(answer);
-
-          var userAnswer = $(".firstAnswer").val();
-          console.log(userAnswer);
-          var userAnswerInt = parseInt(userAnswer, 10)
-          console.log(userAnswerInt);
-
-          if (userAnswerInt === answer) {
-            console.log("you are correct")
-            $("#quotient").text("0" + userAnswerInt);
-            $("#error-message").empty();
-            firstMultiply()
-            
-            
-          } else {
-            $("#error-message").text("Sorry, that is incorrect.  Try again!")
-          }
-         
-        })
-      
-    }
-
-  }
 
 function firstMultiply() {
   var userAnswer = $(".firstAnswer").val();
   if (userAnswer == 0) {
-    $("#error-message").text("Since your answer is 0, you can skip this step, but it's good practice for the routine of Long Division!")
+    $("#error-message").text("Since your first answer is 0, you can skip this step, but it's good practice for the routine of Long Division!")
   }
   else {
     $("#error-message").empty();
   }
-  // $("#error-message").empty();
   
   $("#messages").text("That is correct! Multiply: " + userAnswer + " x " + divisor + " = ?")
   
@@ -169,8 +114,6 @@ function firstMultiply() {
 
   console.log(product);
 
-
-  // var secondInput = $('<input>').attr('type', 'number').addClass('secondAnswer').css("margin","10px");
   $("#answer-box").html(secondInput)
   $("#answer-box").append(secondButton)
   $("#answer-box").append(calcButton);
@@ -235,7 +178,22 @@ function firstSubtraction() {
         var newDividend = parseInt(newDividendString,10);
         console.log(newDividend);
         $("#error-message").append("How many times does " + divisor + " divide into " + newDividend + "?")
+        $("#answer-box").html(fourthInput);
+        $("#answer-box").append(fourthButton);
+        $("#answer-box").append(calcButton);
 
+        var newQuotientInt = parseInt(newDividend/divisor);
+        console.log(newQuotientInt);
+        $(document).on("click", ".submitFour", function() {
+          var userNewQuotient = $(".fourthAnswer").val();
+          var userNewQuotientInt = parseInt(userNewQuotient, 10)
+          console.log(userNewQuotientInt);
+
+          if (userNewQuotientInt == newQuotientInt) {
+            $("#quotient").append(userNewQuotientInt);
+          }
+        })
+       
       }
     } else {
       $("#error-message").text("Sorry, that is incorrect.  Try again!")
