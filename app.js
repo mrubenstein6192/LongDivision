@@ -215,7 +215,7 @@ function firstSubtraction() {
                 }
                 else {
                 $("#secondMult").show();
-                $("#secondMult").html("&nbsp;&nbsp; -" + userSecondProduct);
+                $("#secondMult").html("&nbsp;&nbsp;&nbsp; - " + userSecondProduct);
                 }
                 $("#messages").text("Awesome! Time to subtract again: " + newDividend + " - " + secondProduct);
                 $("#error-message").empty();
@@ -277,7 +277,7 @@ function firstSubtraction() {
                             }
                             else {
                               $("#thirdMult").show();
-                              $("#thirdMult").html("&nbsp;&nbsp;&nbsp;&nbsp; -" + userThirdProduct)
+                              $("#thirdMult").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - " + userThirdProduct)
                             }
                             $("#messages").text("Correct! Last subtraction to figure out the remainder: " + thirdDividend + " - " + thirdProduct);
                             $("#error-message").empty();
