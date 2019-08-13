@@ -42,39 +42,31 @@ var sixthInput = $('<input>').attr('type', 'number').addClass('sixthAnswer').css
 var seventhInput = $('<input>').attr('type', 'number').addClass('seventhAnswer').css("margin", "10px");
 var eigthInput = $('<input>').attr('type', 'number').addClass('eigthAnswer').css("margin", "10px");
 var ninthInput = $('<input>').attr('type', 'number').addClass('ninthAnswer').css("margin", "10px");
-
+// I think these are unnecessary, but my original attempt at functions got tripped up.
 var b = $("<button>");
 b.addClass('submit')
 b.text("Submit");
-
 var secondButton = $("<button>");
 secondButton.addClass('submitTwo');
 secondButton.text("Submit");
-
 var thirdButton = $("<button>");
 thirdButton.addClass('submitThree');
 thirdButton.text("Submit")
-
 var fourthButton = $("<button>");
 fourthButton.addClass('submitFour');
 fourthButton.text("Submit");
-
 var fifthButton = $("<button>");
 fifthButton.addClass('submitFive');
 fifthButton.text("Submit");
-
 var sixthButton = $("<button>");
 sixthButton.addClass('submitSix');
 sixthButton.text("Submit");
-
 var seventhButton = $("<button>");
 seventhButton.addClass('submitSeven');
 seventhButton.text("Submit");
-
 var eigthButton = $("<button>");
 eigthButton.addClass('submitEight');
 eigthButton.text("Submit");
-
 var ninthButton = $("<button>");
 ninthButton.addClass('submitNine');
 ninthButton.text("Submit");
@@ -101,7 +93,6 @@ function firstCheck() {
 
 function doesDivide() {
   var answer;
-
   console.log(arr[0] / divisor);
 
   $(document).on("click", ".submit", function () {
@@ -111,16 +102,12 @@ function doesDivide() {
     console.log(answer);
 
     var userAnswer = $(".firstAnswer").val();
-    
       if (userAnswer == answer) {
-       
-        console.log("you are correct")
         $("#quotient").append(userAnswer);
         firstMultiply()
       } else {
         $("#error-message").text("Sorry, that is incorrect.  Try again!")
       }
-
     })
   }
 
@@ -132,13 +119,9 @@ function firstMultiply() {
   else {
     $("#error-message").empty();
   }
-  
   $("#messages").text("That is correct! Multiply: " + userAnswer + " x " + divisor + " = ?")
-  
   var product = userAnswer * divisor;
-
   console.log(product);
-
   $("#answer-box").html(secondInput)
   $("#answer-box").append(secondButton)
   $("#answer-box").append(calcButton);
@@ -149,7 +132,6 @@ function firstMultiply() {
     console.log(userProduct);
     var productInt = parseInt(userProduct, 10)
     console.log(productInt)
-
     if (product === productInt) {
       $("#error-message").empty();
       $("#messages").text("That is correct!")
@@ -159,16 +141,14 @@ function firstMultiply() {
     } else {
       $("#error-message").text("Sorry, that is incorrect.  Try again!")
     }
-
   })
 }
-
 function firstSubtraction() {
   $("#error-message").empty();
   var lastUserInput = $(".secondAnswer").val();
   console.log(lastUserInput);
   $("#messages").text("Correct! Now subtract: " + arr[0] + " - " + lastUserInput)
-  $("#multiplied").text(lastUserInput);
+  $("#multiplied").html("&nbsp; - " + lastUserInput);
 
   var difference = arr[0] - lastUserInput;
   console.log(difference);
@@ -231,11 +211,11 @@ function firstSubtraction() {
               if (userSecondProduct == secondProduct) {
                 if (secondProduct > 9) {
                   $("#secondMult").show();
-                  $("#secondMult").append(userSecondProduct);
+                  $("#secondMult").html("&nbsp; - " + userSecondProduct);
                 }
                 else {
                 $("#secondMult").show();
-                $("#secondMult").append("&nbsp;&nbsp;" + userSecondProduct);
+                $("#secondMult").html("&nbsp;&nbsp; -" + userSecondProduct);
                 }
                 $("#messages").text("Awesome! Time to subtract again: " + newDividend + " - " + secondProduct);
                 $("#error-message").empty();
@@ -293,18 +273,18 @@ function firstSubtraction() {
                           if (userThirdProduct == thirdProduct) {
                             if (thirdProduct > 9) {
                               $("#thirdMult").show();
-                              $("#thirdMult").append("&nbsp;&nbsp;" + userThirdProduct)
+                              $("#thirdMult").html("&nbsp;&nbsp;&nbsp;&nbsp; -" + userThirdProduct)
                             }
                             else {
                               $("#thirdMult").show();
-                              $("#thirdMult").append("&nbsp;&nbsp;&nbsp;&nbsp" + userThirdProduct)
+                              $("#thirdMult").html("&nbsp;&nbsp;&nbsp;&nbsp; -" + userThirdProduct)
                             }
                             $("#messages").text("Correct! Last subtraction to figure out the remainder: " + thirdDividend + " - " + thirdProduct);
                             $("#error-message").empty();
-                $("#second-error-message").empty();
-                $("#answer-box").html(ninthInput);
-                $("#answer-box").append(ninthButton);
-                $("#answer-box").append(calcButton);
+                            $("#second-error-message").empty();
+                            $("#answer-box").html(ninthInput);
+                            $("#answer-box").append(ninthButton);
+                            $("#answer-box").append(calcButton);
 
                 var thirdDifference = thirdDividend - thirdProduct;
                 console.log(thirdDifference);
