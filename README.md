@@ -1,6 +1,6 @@
 # LongDivision
 
-- (link)
+https://mrubenstein6192.github.io/LongDivision/
 
 ## Purpose
 
