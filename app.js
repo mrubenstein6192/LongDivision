@@ -20,6 +20,8 @@ $(document).ready(function () {
   $("#difference").hide();
   $("#secondMult").hide();
   $("#secondDifference").hide()
+  $("#thirdMult").hide();
+  $("#thirdDifference").hide();
   
   // message to the user to see if divisor goes into first digit of dividend
   firstCheck()
@@ -39,9 +41,7 @@ var fifthInput = $('<input>').attr('type', 'number').addClass('fifthAnswer').css
 var sixthInput = $('<input>').attr('type', 'number').addClass('sixthAnswer').css("margin", "10px");
 var seventhInput = $('<input>').attr('type', 'number').addClass('seventhAnswer').css("margin", "10px");
 var eigthInput = $('<input>').attr('type', 'number').addClass('eigthAnswer').css("margin", "10px");
-// var secondAnswer = $(".secondAnswer").val();
-// var thirdAnswer = $(".thirdAnswer").val();
-// var fourthAnswer = $(".fourthAnswer").val();
+var ninthInput = $('<input>').attr('type', 'number').addClass('ninthAnswer').css("margin", "10px");
 
 var b = $("<button>");
 b.addClass('submit')
@@ -74,6 +74,10 @@ seventhButton.text("Submit");
 var eigthButton = $("<button>");
 eigthButton.addClass('submitEight');
 eigthButton.text("Submit");
+
+var ninthButton = $("<button>");
+ninthButton.addClass('submitNine');
+ninthButton.text("Submit");
 
 var calcButton = $("<button>");
 calcButton.addClass('calc').css("margin", "10px");
@@ -260,6 +264,66 @@ function firstSubtraction() {
                     var thirdDividend = parseInt(thirdDividendString, 10);
                     console.log(thirdDividend);
                     $("#error-message").text("How many times does " + divisor + " divide into " + thirdDividend + "?")
+
+                    $("#answer-box").html(seventhInput);
+                    $("#answer-box").append(seventhButton);
+                    $("#answer-box").append(calcButton);
+
+                    var thirdQuotient = parseInt(thirdDividend/divisor);
+                    console.log(thirdQuotient);
+                    $(document).on("click", ".submitSeven", function() {
+                      var userThirdQuotient = $(".seventhAnswer").val();
+                      var userThirdQuotientInt = parseInt(userThirdQuotient, 10);
+                      console.log(userThirdQuotientInt)
+
+                      if (userThirdQuotientInt == thirdQuotient) {
+                        $("#quotient").append(userThirdQuotient);
+                        $("#messages").text("Correct! Multiply " + userThirdQuotientInt + " x " + divisor);
+                        $("#error-message").empty();
+                        $("#second-error-message").empty();
+                        $("#answer-box").html(eigthInput);
+                        $("#answer-box").append(eigthButton);
+                        $("#answer-box").append(calcButton);
+
+                        var thirdProduct = divisor * userThirdQuotient;
+                        console.log(thirdProduct);
+
+                        $(document).on("click", ".submitEight", function() {
+                          var userThirdProduct = $(".eigthAnswer").val();
+                          if (userThirdProduct == thirdProduct) {
+                            if (thirdProduct > 9) {
+                              $("#thirdMult").show();
+                              $("#thirdMult").append("&nbsp;&nbsp;" + userThirdProduct)
+                            }
+                            else {
+                              $("#thirdMult").show();
+                              $("#thirdMult").append("&nbsp;&nbsp;&nbsp;&nbsp" + userThirdProduct)
+                            }
+                            $("#messages").text("Correct! Last subtraction to figure out the remainder: " + thirdDividend + " - " + thirdProduct);
+                            $("#error-message").empty();
+                $("#second-error-message").empty();
+                $("#answer-box").html(ninthInput);
+                $("#answer-box").append(ninthButton);
+                $("#answer-box").append(calcButton);
+
+                var thirdDifference = thirdDividend - thirdProduct;
+                console.log(thirdDifference);
+
+                $(document).on("click", ".submitNine", function() {
+                  var userThirdDiff = $(".ninthAnswer").val();
+                  if (userThirdDiff == thirdDifference) {
+                    $("#thirdDifference").show();
+                    $("#thirdDifference").append("&nbsp;&nbsp;&nbsp;&nbsp" + userThirdDiff);
+                    $("#messages").text("You did it! This final number is your remainder. Notice it is placed at the end of your quotient!");
+                    $("#error-message").text("Refresh the page to try another one!");
+                    $("#quotient").append(" Remainder: " + thirdDifference);
+                    $("#answer-box").empty();
+                  }
+                })
+                          }
+                        })
+                      } 
+                    })
                   }
                 }) 
               }
