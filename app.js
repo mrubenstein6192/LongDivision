@@ -314,10 +314,19 @@ function firstSubtraction() {
                   if (userThirdDiff == thirdDifference) {
                     $("#thirdDifference").show();
                     $("#thirdDifference").append("&nbsp;&nbsp;&nbsp;&nbsp" + userThirdDiff);
-                    $("#messages").text("You did it! This final number is your remainder. Notice it is placed at the end of your quotient!");
+
+                    if (userThirdDiff == 0) {
+                      $("#messages").text("You did it! Since " + divisor + " divides evenly into " + dividend + ", your remainder is 0!");
+                      $("#error-message").text("Refresh the page to try another one!");
+                      $("#quotient").append(" Remainder: " + thirdDifference);
+                      $("#answer-box").empty();
+                    }
+                    else {
+                    $("#messages").text("You did it! Since " + divisor + " does not divide evely into " + dividend + ", this last number is your remainder. Notice it is placed at the end of your quotient!");
                     $("#error-message").text("Refresh the page to try another one!");
                     $("#quotient").append(" Remainder: " + thirdDifference);
                     $("#answer-box").empty();
+                    }
                   }
                 })
                           }
