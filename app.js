@@ -308,13 +308,28 @@ function firstSubtraction() {
                     $("#answer-box").empty();
                     }
                   }
+                  else {
+                    $("#error-message").text("Sorry, that is incorrect.  Try again!")
+                  }
                 })
+                          }
+                          else {
+                            $("#error-message").text("Sorry, that is incorrect.  Try again!")
                           }
                         })
                       } 
+                      else {
+                        $("#second-error-message").text("Sorry, that is incorrect.  Try again!")
+                      }
                     })
                   }
+                  else {
+                    $("#error-message").text("Sorry, that is incorrect.  Try again!")
+                  }
                 }) 
+              }
+              else {
+                $("#error-message").text("Sorry, that is incorrect.  Try again!")
               }
             })
           }
