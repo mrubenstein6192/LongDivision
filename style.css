@@ -72,8 +72,7 @@ h1 {
 
 #quotient, #divisor, #dividend, #multiplied, #difference, #secondMult, #secondDifference, #thirdMult, #thirdDifference {
   font-family: 'Courier', Courier, monospace;
-  font-weight: bolder;
-  letter-spacing: 1px;
+ 
 }
 
 #box {
@@ -137,7 +136,7 @@ h1 {
   right: 0;
 }
 
-.submit, .submitTwo, .submitThree, .submitFour, .submitFive, .submitSix, .submitSeven, .submitEight, .submitNine {
+/* .submit, .submitTwo, .submitThree, .submitFour, .submitFive, .submitSix, .submitSeven, .submitEight, .submitNine {
   background-color: lightblue;
   padding: 1px 3px;
   font-size: 18px;
@@ -149,9 +148,9 @@ h1 {
   border-color: black;
   border-radius: 5px;
   box-shadow: 2px 2px grey;
-}
+} */
 
-.submit:hover, .submitTwo:hover, .submitThree:hover, .submitFour:hover, .submitFive:hover, .submitSix:hover, .submitSeven:hover, .submitEight:hover, .submitNine:hover {
+/* .submit:hover, .submitTwo:hover, .submitThree:hover, .submitFour:hover, .submitFive:hover, .submitSix:hover, .submitSeven:hover, .submitEight:hover, .submitNine:hover {
   background-color: maroon;
   color: lightblue;
 }
@@ -160,7 +159,7 @@ h1 {
   background-color: maroon;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
-}
+} */
 
 .calc, .hideCalc {
   background-color: lightgoldenrodyellow;

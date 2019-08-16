@@ -6,6 +6,14 @@ $(document).ready(function () {
   $("#calculator-row").hide();
   $("#box").hide();
   $("#answer-form").hide();
+  $("#answer-formTwo").hide();
+  $("#answer-formThree").hide();
+  $("#answer-formFour").hide();
+  $("#answer-formFive").hide();
+  $("#answer-formSix").hide();
+  $("#answer-formSeven").hide();
+  $("#answer-formEight").hide();
+  $("#answer-formNine").hide();
 
   $(document).on("click", ".start", function() {
 
@@ -92,7 +100,7 @@ $(document).ready(function () {
     console.log(arr);
   
     $("#messages").html("How many times does " + divisor + " divide into " + arr[0] + "?" + "<br/>" + "(Hint: 0 is a possible answer!)");
-    var answer = Math.floor(arr[0] / divisor)
+    const answer = Math.floor(arr[0] / divisor)
     console.log("The answer is " + answer);
       
     $("#enterAnswer").on("click", function(event) {
@@ -102,7 +110,9 @@ $(document).ready(function () {
     
         if (userAnswer == answer) {
           $("#quotient").html(userAnswer);
-          $("#answer-box").val("");
+          $("#answer-form").hide();
+          $("#answer-formTwo").show();
+          $("#answer-boxTwo").val("");
           if (userAnswer == 0) {
             $("#error-message").text("Since your first answer is 0, you can skip this step, but it's good practice for the routine of Long Division!")
           }
@@ -117,14 +127,15 @@ $(document).ready(function () {
           // $("#answer-box").html(secondInput)
           // $("#answer-box").append(secondButton)
           // $("#answer-box").append(calcButton);
-          $("#enterAnswer").on("click", function(event) {
+          $("#enterAnswerTwo").on("click", function(event) {
             event.preventDefault();
-            var userAnswerTwo = $("#answer-box").val();
+            var userAnswerTwo = $("#answer-boxTwo").val();
             console.log("The user said " + userAnswerTwo + ". Proceed to subtract.");
             var productInt = parseInt(userAnswerTwo, 10)
       
             if (product == productInt) {
-              $("#answer-box").val("");
+              $("#answer-formTwo").hide();
+              $("#answer-formThree").show();
               $("#multiplied").show()
               $("#multiplied").append(productInt);
               
@@ -139,16 +150,17 @@ $(document).ready(function () {
               // $("#answer-box").append(thirdButton)
               // $("#answer-box").append(calcButton);
 
-              $("#enterAnswer").on("click", function(event) {
+              $("#enterAnswerThree").on("click", function(event) {
                 event.preventDefault();
-                var userAnswerThree = $("#answer-box").val();
+                var userAnswerThree = $("#answer-boxThree").val();
                 
                 console.log("The user said " + userAnswerThree + ". Proceed to bring down.");
                 var differenceInt = parseInt(userAnswerThree, 10)
 
                 if (difference == differenceInt) {
                   $("#error-message").empty();
-                  $("#answer-box").val("");
+                  $("#answer-formThree").hide();
+                  $("#answer-formFour").show();
                   $("#messages").text("That is correct! Bring down " + arr[1] + " and repeat!")
                   $("#difference").show()
                   $("#difference").append(difference);
@@ -170,14 +182,15 @@ $(document).ready(function () {
                    
                     var newQuotientInt = parseInt(newDividend/divisor);
                     console.log("The answer is " + newQuotientInt);
-                    $("#enterAnswer").on("click", function(event) {
+                    $("#enterAnswerFour").on("click", function(event) {
                       event.preventDefault();
-                      var userAnswerFour = $("#answer-box").val();
+                      var userAnswerFour = $("#answer-boxFour").val();
                       var userNewQuotientInt = parseInt(userAnswerFour, 10)
                       console.log("The user said " + userAnswerFour + ". Proceed to multiply.");
             
                       if (userNewQuotientInt == newQuotientInt) {
-                        $("#answer-box").val("");
+                        $("#answer-formFour").hide();
+                        $("#answer-formFive").show();
                         $("#quotient").append(newQuotientInt);
                         $("#messages").text("Correct! Now multiply " + newQuotientInt + " x " + divisor)
                         $("#error-message").empty();
@@ -189,17 +202,20 @@ $(document).ready(function () {
                         var secondProduct = divisor * newQuotientInt;
                         console.log("The answer is " + secondProduct);
             
-                        $("#enterAnswer").on("click", function(event) {
+                        $("#enterAnswerFive").on("click", function(event) {
                           event.preventDefault();
-                          var userSecondProduct = $("#answer-box").val();
+                          var userSecondProduct = $("#answer-boxFive").val();
                           if (userSecondProduct == secondProduct) {
+
                             if (secondProduct > 9) {
-                              $("#answer-box").val("");
+                              $("#answer-formFive").hide();
+                              $("#answer-formSix").show();
                               $("#secondMult").show();
                               $("#secondMult").html("&nbsp;-" + secondProduct);
                             }
                             else {
-                            $("#answer-box").val("");
+                            $("#answer-formFive").hide();
+                            $("#answer-formSix").show();
                             $("#secondMult").show();
                             $("#secondMult").html("&nbsp; -" + secondProduct);
                             }
@@ -213,9 +229,12 @@ $(document).ready(function () {
                             var secondDifference = newDividend - secondProduct;
                             console.log(secondDifference);
             
-                            $(document).on("click", ".submitSix", function() {
-                              var userSecondDifference = $(".sixthAnswer").val();
+                            $("#enterAnswerSix").on("click", function(event) {
+                              event.preventDefault();
+                              var userSecondDifference = $("#answer-boxSix").val();
                               if (userSecondDifference == secondDifference) {
+                                $("#answer-formSix").hide();
+                                $("#answer-formSeven").show();
                                 $("#secondDifference").show();
                                 $("#secondDifference").append("&nbsp;" + secondDifference);
                                 $("#messages").text("You got this! Bring down " + arr[2] + " and repeat!")
@@ -225,66 +244,79 @@ $(document).ready(function () {
                                 $("#secondDifference").append(arr[2]);
                                 var thirdDividendArr = [];
                                 var thirdNumberString = arr[2].toString();
-                                thirdDividendArr.push(userSecondDifference, thirdNumberString);
+                                thirdDividendArr.push(secondDifference, thirdNumberString);
                                 var thirdDividendString = thirdDividendArr.toString().replace(",", "");
                                 var thirdDividend = parseInt(thirdDividendString, 10);
                                 console.log(thirdDividend);
                                 $("#error-message").text("How many times does " + divisor + " divide into " + thirdDividend + "?")
                                 // $("#second-error-message").hide();
-                                $("#answer-box").html(seventhInput);
-                                $("#answer-box").append(seventhButton);
-                                $("#answer-box").append(calcButton);
+                                // $("#answer-box").html(seventhInput);
+                                // $("#answer-box").append(seventhButton);
+                                // $("#answer-box").append(calcButton);
             
                                 var thirdQuotient = parseInt(thirdDividend/divisor);
                                 console.log(thirdQuotient);
-                                $(document).on("click", ".submitSeven", function() {
-                                  var userThirdQuotient = $(".seventhAnswer").val();
+                                $("#enterAnswerSeven").on("click", function(event) {
+                                  event.preventDefault();
+                                  var userThirdQuotient = $("#answer-boxSeven").val();
                                   var userThirdQuotientInt = parseInt(userThirdQuotient, 10);
                                   console.log(userThirdQuotientInt)
             
                                   if (userThirdQuotientInt == thirdQuotient) {
+                                    $("#answer-formSeven").hide();
+                                    $("#answer-formEight").show();
                                     $("#quotient").append(thirdQuotient);
                                     $("#messages").text("Correct! Multiply " + thirdQuotient + " x " + divisor);
                                     $("#error-message").empty();
                                     $("#second-error-message").empty();
-                                    $("#answer-box").html(eigthInput);
-                                    $("#answer-box").append(eigthButton);
-                                    $("#answer-box").append(calcButton);
+                                    // $("#answer-box").html(eigthInput);
+                                    // $("#answer-box").append(eigthButton);
+                                    // $("#answer-box").append(calcButton);
                             
                                     var thirdProduct = divisor * thirdQuotient;
                                     console.log(thirdProduct);
             
-                                    $(document).on("click", ".submitEight", function() {
+                                    $("#enterAnswerEight").on("click", function(event) {
+                                      event.preventDefault();
                                       console.log("Second Product: " + secondProduct);
-                                      var userThirdProduct = $(".eigthAnswer").val();
+                                      var userThirdProduct = $("#answer-boxEight").val();
                                       if (userThirdProduct == thirdProduct) {
                                         if (thirdProduct > 9) {
                                           if (secondProduct > 9) {
+                                            $("#answer-formEight").hide();
+                                            $("#answer-formNine").show();
                                             $("#thirdMult").show();
                                             $("#thirdMult").html("&nbsp; -" + thirdProduct);
                                           }
                                           else {
+                                          $("#answer-formEight").hide();
+                                          $("#answer-formNine").show();
                                           $("#thirdMult").show();
                                           $("#thirdMult").html("&nbsp;&nbsp;-" + thirdProduct)
                                           }
                                         }
                                         else {
+                                          $("#answer-formEight").hide();
+                                          $("#answer-formNine").show();
                                           $("#thirdMult").show();
                                           $("#thirdMult").html("&nbsp;&nbsp; -" + thirdProduct)
                                         }
                                         $("#messages").text("Correct! Last subtraction to figure out the remainder: " + thirdDividend + " -" + thirdProduct);
                                         $("#error-message").empty();
                                         $("#second-error-message").empty();
-                                        $("#answer-box").html(ninthInput);
-                                        $("#answer-box").append(ninthButton);
-                                        $("#answer-box").append(calcButton);
+                                        // $("#answer-box").html(ninthInput);
+                                        // $("#answer-box").append(ninthButton);
+                                        // $("#answer-box").append(calcButton);
                                      
                             var thirdDifference = thirdDividend - thirdProduct;
                             console.log(thirdDifference);
             
-                            $(document).on("click", ".submitNine", function() {
-                              var userThirdDiff = $(".ninthAnswer").val();
+                            $("#enterAnswerNine").on("click", function(event) {
+                              event.preventDefault();
+                              var userThirdDiff = $("#answer-boxNine").val();
                               if (userThirdDiff == thirdDifference) {
+                               
+                                $("#answer-formNine").hide();
                                 $("#thirdDifference").show();
                                 $("#thirdDifference").append("&nbsp;&nbsp;" + thirdDifference);
             
