@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
   $("#dividend").hide();
   $("#divisor").hide();
   // $("#answer-box").hide();
