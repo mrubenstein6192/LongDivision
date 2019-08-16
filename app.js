@@ -2,7 +2,7 @@ $(document).ready(function () {
 
   $("#dividend").hide();
   $("#divisor").hide();
-  $("#answer-box").hide();
+  // $("#answer-box").hide();
   $("#calculator-row").hide();
   $("#box").hide();
   $("#answer-form").hide();
@@ -18,14 +18,14 @@ $(document).ready(function () {
   $(document).on("click", ".start", function() {
 
     start();
-
+    $("#answer-box").focus();
   })
 
   function start() {
     $("#welcome").hide();
     $("#dividend").show();
     $("#divisor").show();
-    $("#answer-box").show();
+    // $("#answer-box").show();
     $("#calculator-row").show();
     $("#box").show();
     $("#answer-form").show();
@@ -70,6 +70,7 @@ $(document).ready(function () {
           $("#answer-form").val("");
           $("#answer-form").hide();
           $("#answer-formTwo").show();
+          $("#answer-boxTwo").focus();
           $("#answer-boxTwo").val("");
           if (userAnswer == 0) {
             $("#error-message").text("Since your first answer is 0, you can skip this step, but it's good practice for the routine of Long Division!")
@@ -94,6 +95,7 @@ $(document).ready(function () {
             if (product == productInt) {
               $("#answer-formTwo").hide();
               $("#answer-formThree").show();
+              $("#answer-boxThree").focus();
               $("#multiplied").show()
               $("#multiplied").append(productInt);
               
@@ -119,6 +121,7 @@ $(document).ready(function () {
                   $("#error-message").empty();
                   $("#answer-formThree").hide();
                   $("#answer-formFour").show();
+                  $("#answer-boxFour").focus();
                   $("#messages").text("That is correct! Bring down " + arr[1] + " and repeat!")
                   $("#difference").show()
                   $("#difference").append(difference);
@@ -149,6 +152,7 @@ $(document).ready(function () {
                       if (userNewQuotientInt == newQuotientInt) {
                         $("#answer-formFour").hide();
                         $("#answer-formFive").show();
+                        $("#answer-boxFive").focus();
                         $("#quotient").append(newQuotientInt);
                         $("#messages").text("Correct! Now multiply " + newQuotientInt + " x " + divisor)
                         $("#error-message").empty();
@@ -168,12 +172,14 @@ $(document).ready(function () {
                             if (secondProduct > 9) {
                               $("#answer-formFive").hide();
                               $("#answer-formSix").show();
+                              $("#answer-boxSix").focus();
                               $("#secondMult").show();
                               $("#secondMult").html("&nbsp;-" + secondProduct);
                             }
                             else {
                             $("#answer-formFive").hide();
                             $("#answer-formSix").show();
+                            $("#answer-boxSix").focus();
                             $("#secondMult").show();
                             $("#secondMult").html("&nbsp; -" + secondProduct);
                             }
@@ -193,6 +199,7 @@ $(document).ready(function () {
                               if (userSecondDifference == secondDifference) {
                                 $("#answer-formSix").hide();
                                 $("#answer-formSeven").show();
+                                $("#answer-boxSeven").focus();
                                 $("#secondDifference").show();
                                 $("#secondDifference").append("&nbsp;" + secondDifference);
                                 $("#messages").text("You got this! Bring down " + arr[2] + " and repeat!")
@@ -223,6 +230,7 @@ $(document).ready(function () {
                                   if (userThirdQuotientInt == thirdQuotient) {
                                     $("#answer-formSeven").hide();
                                     $("#answer-formEight").show();
+                                    $("#answer-boxEight").focus();
                                     $("#quotient").append(thirdQuotient);
                                     $("#messages").text("Correct! Multiply " + thirdQuotient + " x " + divisor);
                                     $("#error-message").empty();
@@ -243,12 +251,14 @@ $(document).ready(function () {
                                           if (secondProduct > 9) {
                                             $("#answer-formEight").hide();
                                             $("#answer-formNine").show();
+                                            $("#answer-boxNine").focus();
                                             $("#thirdMult").show();
                                             $("#thirdMult").html("&nbsp; -" + thirdProduct);
                                           }
                                           else {
                                           $("#answer-formEight").hide();
                                           $("#answer-formNine").show();
+                                          $("#answer-boxNine").focus();
                                           $("#thirdMult").show();
                                           $("#thirdMult").html("&nbsp;&nbsp;-" + thirdProduct)
                                           }
@@ -256,6 +266,7 @@ $(document).ready(function () {
                                         else {
                                           $("#answer-formEight").hide();
                                           $("#answer-formNine").show();
+                                          $("#answer-boxNine").focus();
                                           $("#thirdMult").show();
                                           $("#thirdMult").html("&nbsp;&nbsp; -" + thirdProduct)
                                         }
