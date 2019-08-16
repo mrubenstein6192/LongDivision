@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Red+Hat+Display');
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 @import url('https://fonts.googleapis.com/css?family=Lexend+Tera');
+@import url('https://fonts.googleapis.com/css?family=Libre+Franklin');
 
 body, html { 
   /* The image used */
@@ -31,8 +32,20 @@ body, html {
   
 }
 
+.card-header {
+  background-color: rgb(255, 185, 7);
+  text-align: center;
+  /* border-radius: 15px; */
+  border-color: black;
+}
+
 .card {
+  margin-top: 3px;
   height: 100%;
+  border-style: solid;
+  border-color: black;
+  /* border-radius: 15px; */
+  box-shadow: 4px 4px grey;
 }
 #disclaimer {
   border-radius: 25px;
@@ -66,7 +79,7 @@ h1 {
 }
 
 #messages{
-  font-family: "Josefin Sans";
+  font-family: "Libre Franklin";
   font-size: large;
 }
 
