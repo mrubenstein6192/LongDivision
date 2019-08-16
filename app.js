@@ -29,6 +29,7 @@ $(document).ready(function () {
     $("#calculator-row").show();
     $("#box").show();
     $("#answer-form").show();
+    $("#answer-box").val("");
     $("#error-message").empty();
     $("#quotient").empty();
     var calcButton = $("<button>");
@@ -39,51 +40,7 @@ $(document).ready(function () {
     var restart = $("<button>");
     restart.addClass('start')
     restart.text("Restart");
-    // different buttons for each answer
-    var b = $("<submit>");
-    b.attr("type", "submit");
-    b.val("Submit");
-    b.addClass('submit');
-    b.text("Submit");
-    var secondButton = $("<button>");
-    secondButton.addClass('submitTwo');
-    secondButton.text("Submit");
-    var thirdButton = $("<button>");
-    thirdButton.addClass('submitThree');
-    thirdButton.text("Submit")
-    var fourthButton = $("<button>");
-    fourthButton.addClass('submitFour');
-    fourthButton.text("Submit");
-    var fifthButton = $("<button>");
-    fifthButton.addClass('submitFive');
-    fifthButton.text("Submit");
-    var sixthButton = $("<button>");
-    sixthButton.addClass('submitSix');
-    sixthButton.text("Submit");
-    var seventhButton = $("<button>");
-    seventhButton.addClass('submitSeven');
-    seventhButton.text("Submit");
-    var eigthButton = $("<button>");
-    eigthButton.addClass('submitEight');
-    eigthButton.text("Submit");
-    var ninthButton = $("<button>");
-    ninthButton.addClass('submitNine');
-    ninthButton.text("Submit");
-
-    // different input field for each answer
-    var firstInput = $('<input>').attr('type', 'text').addClass('firstAnswer').css("margin", "10px");
-    var secondInput = $('<input>').attr('type', 'number').addClass('secondAnswer').css("margin", "10px");
-    var thirdInput = $('<input>').attr('type', 'number').addClass('thirdAnswer').css("margin", "10px");
-    var fourthInput = $('<input>').attr('type', 'number').addClass('fourthAnswer').css("margin", "10px");
-    var fifthInput = $('<input>').attr('type', 'number').addClass('fifthAnswer').css("margin", "10px");
-    var sixthInput = $('<input>').attr('type', 'number').addClass('sixthAnswer').css("margin", "10px");
-    var seventhInput = $('<input>').attr('type', 'number').addClass('seventhAnswer').css("margin", "10px");
-    var eigthInput = $('<input>').attr('type', 'number').addClass('eigthAnswer').css("margin", "10px");
-    var ninthInput = $('<input>').attr('type', 'number').addClass('ninthAnswer').css("margin", "10px");
-    // $("#answer-box").append(r)
-    // $("#answer-box").append(firstInput);
-    // $("#answer-box").append(b)
-    // $("#answer-box").append(calcButton);
+   
     var divisor = Math.floor(Math.random() * 9) + 1;
     var dividend = Math.floor(Math.random() * 899) + 100;
   
@@ -110,6 +67,7 @@ $(document).ready(function () {
     
         if (userAnswer == answer) {
           $("#quotient").html(userAnswer);
+          $("#answer-form").val("");
           $("#answer-form").hide();
           $("#answer-formTwo").show();
           $("#answer-boxTwo").val("");
@@ -301,7 +259,7 @@ $(document).ready(function () {
                                           $("#thirdMult").show();
                                           $("#thirdMult").html("&nbsp;&nbsp; -" + thirdProduct)
                                         }
-                                        $("#messages").text("Correct! Last subtraction to figure out the remainder: " + thirdDividend + " -" + thirdProduct);
+                                        $("#messages").text("Correct! Last subtraction to figure out the remainder: " + thirdDividend + " - " + thirdProduct);
                                         $("#error-message").empty();
                                         $("#second-error-message").empty();
                                         // $("#answer-box").html(ninthInput);
